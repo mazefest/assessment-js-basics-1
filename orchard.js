@@ -2,6 +2,11 @@
 // Apple Orchard //
 ///////////////////
 
+const { isConstructorDeclaration } = require("typescript");
+
+let daysOfTheWeek = ['Monday', 'Tuesday', 'WednesDay', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+let appleFarmTitle = ['Fuji', 'Gala', 'Pink'];
+
 /*
     The data below has been collected over the 
     last week at an apple orchard. You will be 
@@ -49,11 +54,22 @@ const pinkPrice = .55
     Log `totalAcres` to the console.
 */
 
-// CODE HERE
+let totalAcres = 0;
+let appleFarms = [fujiAcres, galaAcres, pinkAcres];
 
+appleFarms.forEach(appleFarm => {
+    let farmAcresPickedTotal = 0;
+    appleFarm.forEach(acresPicked => {
+        farmAcresPickedTotal += acresPicked;
+    });
+    totalAcres += farmAcresPickedTotal;
+});
 
-
-
+console.log('# QUESTION 1 =================== #');
+console.log('');
+console.log('Total Acres');
+console.log(`${totalAcres}`);
+console.log('');
 
 // PROBLEM 2
 
@@ -67,11 +83,12 @@ const pinkPrice = .55
     Log `averageDailyAcres` to the console.
 */
 
-// CODE HERE
-
-
-
-
+console.log('# QUESTION 2 =================== #');
+console.log('');
+let averageDailyAcres = totalAcres / 7;
+console.log('Averaging Daily Acres');
+console.log(`${averageDailyAcres} Acres`);
+console.log('');
 
 // PROBLEM 3
 
@@ -105,7 +122,15 @@ const pinkPrice = .55
 let acresLeft = 174 
 let days = 0
 
-// CODE HERE
+while(acresLeft > 0) {
+    acresLeft -= averageDailyAcres;
+    days += 1;
+}
+
+console.log('# QUESTION 3 =================== #');
+console.log('');
+console.log(`Days: ${days}`);
+console.log('');
 
 
 
@@ -133,14 +158,51 @@ let days = 0
     values to the new arrays.
 */
 
-// CODE HERE
+console.log('# QUESTION 4 =================== #');
+console.log('');
 
-// let fujiTons =
-// let galaTons =
-// let pinkTons =
+let fujiTons = [];
+let galaTons = [];
+let pinkTons = [];
 
+// Apple Farms: [FujiAcresPicked, GalaAcresPicked, PinkAcresPinked]
+// Apple Farms contains an array of arrays of numbers, with the numbers
+// being the acres piced each day.
+appleFarms.forEach((farm, index) => {
+    farm.forEach((acresPicked) => {
+        let tonsPicked = acresPicked * 6.5;
+        switch (index) {
+            case 0:
+                fujiTons.push(tonsPicked);
+                break;
+            case 1:
+                galaTons.push(tonsPicked);
+                break;
+            case 2:
+                pinkTons.push(tonsPicked);
+                break;
+            default:
+                // do nada
+                break;
+        }
+    });
+});
 
+// Console Log Tons Picked
 
+let appleFarmTonsPicked = [fujiTons, galaTons, pinkTons];
+
+appleFarmTonsPicked.forEach((farm, index) => {
+    let totalTons = 0;
+    console.log(`# ${appleFarmTitle[index]} Tons`);
+    farm.forEach((tonsPicked, index) =>{
+        totalTons += tonsPicked;
+        console.log(`${daysOfTheWeek[index]}: \t${tonsPicked}\ttons`);
+    });
+    console.log('-----------------------------');
+    console.log(`Total: ${totalTons}`);
+    console.log(''); // line break
+});
 
 
 
@@ -160,13 +222,45 @@ let days = 0
     Hint: there are 2000 pounds in a ton.
 */
 
-// CODE HERE 
+console.log('# QUESTION 5 =================== #');
+console.log('');
 
-// let fujiPounds =
-// let galaPounds =
-// let pinkPounds =
+let fujiPounds = 0;
+let galaPounds = 0;
+let pinkPounds = 0;
 
 
+appleFarmTonsPicked.forEach((farm, farmIndex) => {
+    let totalPoundsPicked = 0;
+    
+    farm.forEach(tonsPicked => {
+        totalPoundsPicked += tonsPicked * 2000;
+    });
+
+    switch(farmIndex) {
+        case 0:
+            fujiPounds = totalPoundsPicked;
+            break;
+        case 1:
+            galaPounds = totalPoundsPicked;
+            break;
+        case 2:
+            pinkPounds = totalPoundsPicked;
+            break;
+        default:
+            // uh oh
+    } 
+});
+
+appleFarmsPoundsPicked = [fujiPounds, galaPounds, pinkPounds];
+
+
+// Log pounds picked per apple type
+appleFarmsPoundsPicked.forEach((poundsPicked, farmIndex) => {
+    console.log(`${ appleFarmTitle[farmIndex] }: ${ poundsPicked } lbs`);
+});
+
+console.log(``);
 
 
 
@@ -187,15 +281,19 @@ let days = 0
     console. 
 */
 
-// CODE HERE
+console.log('# QUESTION 6 =================== #');
+console.log('');
 
-// let fujiProfit =
-// let galaProfit =
-// let pinkProfit =
+let fujiProfit = fujiPounds * fujiPrice;
+let galaProfit = galaPounds * galaPrice;
+let pinkProfit = pinkPounds * pinkPrice;
 
+let appleProfits = [fujiProfit, galaProfit, pinkProfit];
+appleProfits.forEach((profit, farmIndex)=>{
+    console.log(`${appleFarmTitle[farmIndex]} Profit: $ ${profit.toFixed(2)}`);
+})
 
-
-
+console.log('');
 
 
 // PROBLEM 7
@@ -208,4 +306,13 @@ let days = 0
     Log `totalProfit` to the console.
 */
 
-// CODE HERE
+console.log('# QUESTION 7 =================== #');
+console.log('');
+
+let toalProfit = 0;
+appleProfits.forEach(profit => {
+    toalProfit += profit;
+});
+
+console.log('Total Profit');
+console.log(`$ ${toalProfit.toFixed(2)}`);

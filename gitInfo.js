@@ -9,7 +9,7 @@
     It should be a string containing your best definition of what Git is.
 */
 
-//CODE HERE
+let gitDefinition = 'Is a program used for version control';
 
 //////////////////PROBLEM 2////////////////////
 /*
@@ -17,7 +17,7 @@
     It should be a string containing your best definition of what GitHub is.
 */
 
-//CODE HERE
+let gitHubDefinition = 'Is a platform used for remotley hosting software, with the main purpose of source/version control';
 
 //////////////////PROBLEM 3////////////////////
 /*
@@ -25,7 +25,7 @@
     It should be a string containing your best definition of what 'git init' does.
 */
 
-//CODE HERE
+let gitInitDefinition = 'Git init, initializes git tracking for a specified folder and begins tracking all changes';
 
 //////////////////PROBLEM 4////////////////////
 /*
@@ -33,7 +33,7 @@
     It should be a string containing your best definition of what 'git clone' does.
 */
 
-//CODE HERE
+let gitCloneDefinition = 'Copies a remote repository to your local machine';
 
 //////////////////PROBLEM 5////////////////////
 /*
@@ -41,7 +41,7 @@
     It should be a string containing your best definition of what 'git status' does.
 */
 
-//CODE HERE
+let gitStatusDefinition = 'This command provies you the current status of your git environment, showing you all untracked and staged changes.';
 
 //////////////////PROBLEM 6////////////////////
 /*
@@ -52,7 +52,7 @@
     It should be a string containing the code to add all files.
 */
 
-//CODE HERE
+let gitAddDefinition = 'This commands stages specified changes';
 
 //////////////////PROBLEM 7////////////////////
 /*
@@ -63,7 +63,7 @@
     It should be a string containing the code to commit using the message "initial commit".
 */
 
-//CODE HERE
+let gitCommitDefinition = 'This groups all staged changes and stores them as a commit which is labeled with a message and a hash value.';
 
 
 //////////////////PROBLEM 8////////////////////
@@ -72,4 +72,4 @@
     It should be a string containing your best definition of what 'git push' does.
 */
 
-//CODE HERE
+let gitPushDefinition = 'Is a command that sends all commits to a specified remote repository, where they are then tracked remotely';
